@@ -22,6 +22,7 @@
 * note - the note you are writing under the topic
 
 ** localhost:4545/note - to enter note    [Post request]
+
 ** localhost:4545/note/your_topic_name e.g localhost:4545/note/fiction  [Get request]
 
 ** localhost:4545/delete/your_topic_name
