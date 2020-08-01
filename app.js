@@ -64,6 +64,12 @@ let server = http.createServer((req, res) => {
         })  
     
     }
+
+    if(req.method == "POST" && req.url.startsWith('/delete')){
+        let current_url = req.url.split('/')[2]
+        let filePath = path.join(path.dirname(process.mainModule.filename), `${current_url}`);
+      return  fs.rmdir(filePath, {recursive : true}, err => console.log(err))
+    }
 })
 
-server.listen('4545', () => console.log('server is running at 4545 on postman'))
+server.listen('4545', (err) => console.log('server is running at 4545 on postman'))
