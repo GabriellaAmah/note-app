@@ -44,8 +44,11 @@ let server = http.createServer((req, res) => {
                       shelf.content.push(parsedData.note)
 
                      WriteToFile(newFile, shelf)
+                    
                     }
+                    res.end()
                 })
+
             }else{
                 shelf = {content : [parsedData.note]}
                 WriteToFile(newFile, shelf)
@@ -78,7 +81,9 @@ let server = http.createServer((req, res) => {
         fs.readFile(filePath, (err, data) => {
             if(!err){
                 let result = data.toString()
-                res.write(result)
+                JSON.parse(result).content.forEach(note => {
+                    res.write(`${note}\n`)
+                });
                 res.end()
             }
         })  
